@@ -1,9 +1,9 @@
+// DEPENDENCIES
 const { Model, DataTypes } = require('sequelize');
-
 const sequelize = require('../config/connection');
-
+// INITIALIZE MODEL CLASS
 class ProductTag extends Model {}
-
+// PRODUCT-TAG MODEL
 ProductTag.init(
   {
     // define an id column
@@ -13,7 +13,7 @@ ProductTag.init(
       primaryKey: true,
       autoIncrement: true
     },
-    // define a product id column
+    // define a product_id column
     product_id: {
       type: DataTypes.INTEGER,
       references: {
@@ -38,5 +38,5 @@ ProductTag.init(
     modelName: 'product_tag',
   }
 );
-
+// MODULE EXPORTS
 module.exports = ProductTag;

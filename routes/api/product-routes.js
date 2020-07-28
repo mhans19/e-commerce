@@ -1,11 +1,9 @@
+// DEPENDENCIES
 const router = require('express').Router();
 const { Product, Category, Tag, ProductTag } = require('../../models');
-
-// The `/api/products` endpoint
-
-// get all products
+// PRODUCT ENDPOINTS (i.e., `/api/products`)
+// GET ALL PRODUCTS
 router.get('/', (req, res) => {
-  // find all products
   Product.findAll({
     // Include the product data
     include: [
@@ -27,11 +25,9 @@ router.get('/', (req, res) => {
       res.status(500).json(err);
   });
 });
-
-// get one product
+// GET ALL PRODUCTS BY ID
 router.get('/:id', (req, res) => {
   Product.findOne({
-    // filter by id
     where: {
       id: req.params.id
     },
@@ -61,8 +57,7 @@ router.get('/:id', (req, res) => {
     res.status(500).json(err);
   });
 });
-
-// create new product
+// CREATE NEW PRODUCT
 router.post('/', (req, res) => {
   /* req.body should look like this...
     {
@@ -93,10 +88,8 @@ router.post('/', (req, res) => {
       res.status(400).json(err);
     });
 });
-
-// update product
+// UPDATE PRODUCTS BY ID
 router.put('/:id', (req, res) => {
-  // update product data
   Product.update(req.body, {
     where: {
       id: req.params.id,
@@ -135,9 +128,8 @@ router.put('/:id', (req, res) => {
       res.status(400).json(err);
     });
 });
-
+// DELETE PRODUCT BY ID
 router.delete('/:id', (req, res) => {
-  // delete one product by its `id` value
   Product.destroy({
     where: {
       id: req.params.id
@@ -145,7 +137,7 @@ router.delete('/:id', (req, res) => {
   })
     .then(dbProductData => {
       if (!dbProductData) {
-        res.status(404).json({ message: 'No category found with this id' });
+        res.status(404).json({ message: 'No product found with this id' });
         return;
       }
       res.json(dbProductData);
@@ -155,5 +147,5 @@ router.delete('/:id', (req, res) => {
       res.status(500).json(err);
     });
 });
-
+// MODULE EXPORTS
 module.exports = router;

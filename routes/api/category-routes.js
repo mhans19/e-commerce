@@ -1,10 +1,9 @@
+// DEPENDENCIES
 const router = require('express').Router();
 const { Category, Product } = require('../../models');
-
-// The `/api/categories` endpoint
-
+// CATEGORY ENDPOINTS (i.e., `/api/categories`)
+// GET ALL CATEGORIES
 router.get('/', (req, res) => {
-  // Access our Category model and run .findAll() method
   Category.findAll({
     // Include the product data
     include: [
@@ -20,11 +19,9 @@ router.get('/', (req, res) => {
       res.status(500).json(err);
   });
 });
-
+// GET CATEGORIES BY ID
 router.get('/:id', (req, res) => {
-  // Access a specific category with .findOne() method
   Category.findOne({
-    // filter by id
     where: {
       id: req.params.id
     },
@@ -48,9 +45,8 @@ router.get('/:id', (req, res) => {
     res.status(500).json(err);
   });
 });
-
+// CREATE NEW CATEGORY
 router.post('/', (req, res) => {
-  // create a new category
   // expects {category_name: 'Electronics'}
   Category.create({
     category_name: req.body.category_name
@@ -61,12 +57,9 @@ router.post('/', (req, res) => {
       res.status(500).json(err);
   });
 });
-
+// UPDATE CATEGORY BY ID
 router.put('/:id', (req, res) => {
-  // update a category by its `id` value
   // expects {category_name: 'Electronics'}
-  
-  // if req.body has exact key/value pairs to match the model, you can just use `req.body` instead
   Category.update(req.body, {
     where: {
         id: req.params.id
@@ -84,9 +77,8 @@ router.put('/:id', (req, res) => {
     res.status(500).json(err);
   });
 });
-
+// DELETE CATEGORY BY ID
 router.delete('/:id', (req, res) => {
-  // delete a category by its `id` value
   Category.destroy({
     where: {
       id: req.params.id
@@ -104,5 +96,5 @@ router.delete('/:id', (req, res) => {
       res.status(500).json(err);
     });
 });
-
+// MODULE EXPORTS
 module.exports = router;
