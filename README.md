@@ -31,7 +31,7 @@
 ## **APPLICATION LINKS**
 > Live Application (Not relevant for this project)  
 > [GitHub Repository](https://github.com/mhans19/e-commerce)  
-> [Video Demonstration](!!!!!!!!!!!!!!!)  
+> [Video Demonstration](https://youtu.be/jRUwMD42iCY)  
 
 ---
 
@@ -74,7 +74,7 @@ This application was developed with the following application structures:
 > 5. Initiate the server (e.g., 'npm start')  
 > 6. Open [Insomnia](https://insomnia.rest/) for testing localhost:3001/api/ API enpoints (i.e., **GET**, **POST**, **PUT**, and **DELETE** routes for **categories**, **products**, and **tags**)  
 > 
-> [Walkthrough Demonstration](!!!!!!!!!!!!!)  
+> [Walkthrough Demonstration](https://youtu.be/jRUwMD42iCY)  
 
 ---
 
